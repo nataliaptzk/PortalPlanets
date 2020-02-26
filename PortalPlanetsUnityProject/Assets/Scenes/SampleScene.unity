@@ -440,12 +440,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3ccf1109962d843be47943682a5c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivityX: 1
-  mouseSensitivityY: 1
   walkSpeed: 10
   backWalkSpeed: 5
-  jumpForce: 220
-  groundedMask:
+  jumpForce: 500
+  _groundedLayerMask:
     serializedVersion: 2
     m_Bits: 256
 --- !u!1 &963194225

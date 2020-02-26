@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform _cameraTargetToFollow;
 
-    private float smoothSpeed = 0.75f;
+    private float smoothSpeed = 0.125f;
     private Vector3 _velocity = Vector3.zero;
     private Vector3 _offset;
 
@@ -21,9 +21,9 @@ public class CameraFollow : MonoBehaviour
         // transform.rotation = Quaternion.FromToRotation(myTransform.up, (_cameraTargetToFollow.transform.position - myTransform.position).normalized) * myTransform.rotation;
 
         // Version 1 of Camera Follow: Camera is always up to the world
-        // transform.LookAt(_cameraTargetToFollow, _cameraTargetToFollow.transform.up);
+        transform.LookAt(_cameraTargetToFollow, _cameraTargetToFollow.transform.up);
 
         // Version  of Camera Follow: Camera is always up to the player
-        transform.LookAt(_cameraTargetToFollow);
+        // transform.LookAt(_cameraTargetToFollow);
     }
 }

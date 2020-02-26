@@ -1,25 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(GravityBody))]
 public class ThirdPersonController : MonoBehaviour
 {
-    // public vars
-    public float walkSpeed;
-    public float backWalkSpeed;
-    public float jumpForce;
-    public LayerMask groundedMask;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float backWalkSpeed;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private LayerMask _groundedLayerMask;
 
-    // System vars
     private bool _grounded;
-    private Vector3 _moveAmount;
-
-    private Vector3 _smoothMoveVelocity;
-
     private float _verticalLookRotation;
-
+    private Vector3 _moveAmount;
+    private Vector3 _smoothMoveVelocity;
     private Rigidbody _rigidbody;
-
 
     void Awake()
     {
@@ -30,9 +25,9 @@ public class ThirdPersonController : MonoBehaviour
     {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        Vector3 targetMoveAmount;
         Vector3 moveDir = new Vector3(x, 0, y).normalized;
 
+        Vector3 targetMoveAmount;
         if (y <= -1)
         {
             targetMoveAmount = moveDir * backWalkSpeed;
@@ -54,29 +49,29 @@ public class ThirdPersonController : MonoBehaviour
                 _rigidbody.AddForce(transform.up * jumpForce);
             }
         }
-
-        CheckGround();
     }
 
-    private void CheckGround() // todo change this to oncolllison enter etc
-    {
-        // Grounded check
-        Ray ray = new Ray(transform.position, -transform.up);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 1 + .1f, groundedMask))
-        {
-            _grounded = true;
-        }
-        else
-        {
-            _grounded = false;
-        }
-    }
 
     void FixedUpdate()
     {
         Vector3 localMove = transform.TransformDirection(_moveAmount) * Time.fixedDeltaTime;
         _rigidbody.MovePosition(_rigidbody.position + localMove);
+    }
+
+
+    private void OnCollisionStay(Collision other)
+    {
+        if ((_groundedLayerMask.value & 1 << other.gameObject.layer) == 1 << other.gameObject.layer)
+        {
+            _grounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if ((_groundedLayerMask.value & 1 << other.gameObject.layer) == 1 << other.gameObject.layer)
+        {
+            _grounded = false;
+        }
     }
 }
