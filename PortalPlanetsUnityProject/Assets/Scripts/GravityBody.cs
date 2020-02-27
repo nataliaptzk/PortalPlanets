@@ -1,21 +1,30 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (Rigidbody))]
-public class GravityBody : MonoBehaviour {
-	
-   private GravityAttractor _planet;
-   private Rigidbody _rb;
-	
-    void Awake () {
-        _planet = GameObject.FindGameObjectWithTag("Planet").GetComponent<GravityAttractor>();
-        _rb = GetComponent<Rigidbody> ();
+[RequireComponent(typeof(Rigidbody))]
+public class GravityBody : MonoBehaviour
+{
+    public GravityAttractor planet;
+    private Rigidbody _rb;
 
+    void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;
         _rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
-	
-    void FixedUpdate () {
-        _planet.Attract(_rb);
+
+    void FixedUpdate()
+    {
+        planet.Attract(_rb);
     }
+
+/*    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Planet")
+        {
+            planet = other.gameObject.GetComponent<GravityAttractor>();
+        }
+    }*/
 }
