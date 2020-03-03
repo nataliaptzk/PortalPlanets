@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 4546594910213800182}
   - component: {fileID: 4546594910213800173}
   - component: {fileID: 4546594910213800172}
-  - component: {fileID: 5081974172492949876}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -177,19 +176,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _pickUpSlot: {fileID: 8040122128882093840}
---- !u!65 &5081974172492949876
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4546594910213800183}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
-  m_Center: {x: 0, y: 0.28, z: 0}
 --- !u!1 &4546594910716616500
 GameObject:
   m_ObjectHideFlags: 0

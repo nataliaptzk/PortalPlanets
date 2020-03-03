@@ -54,10 +54,9 @@ public class ThirdPersonController : MonoBehaviour
             }
         }
 
-
         if (Input.GetMouseButtonUp(0) && _pickUpSlot.transform.childCount == 1)
         {
-            ItemDrop(_pickUpSlot.transform.GetChild(0).gameObject);
+            _pickUpSlot.transform.GetChild(0).gameObject.GetComponent<PickUpItem>().ItemDrop();
         }
     }
 
@@ -68,37 +67,6 @@ public class ThirdPersonController : MonoBehaviour
         _rigidbody.MovePosition(_rigidbody.position + localMove);
     }
 
-    private void ItemPickUp(GameObject item)
-    {
-        if (_pickUpSlot.transform.childCount == 0)
-        {
-            item.transform.SetParent(_pickUpSlot);
-            item.transform.localPosition = Vector3.zero;
-            item.GetComponent<Rigidbody>().isKinematic = true;
-            item.GetComponent<GravityBody>().enabled = false;
-        }
-    }
-
-    private void ItemDrop(GameObject item)
-    {
-        if (_pickUpSlot.transform.childCount == 1)
-        {
-            _pickUpSlot.transform.GetChild(0).GetComponent<GravityBody>().enabled = true;
-            _pickUpSlot.transform.GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
-            _pickUpSlot.transform.GetChild(0).SetParent(null);
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (Input.GetMouseButton(0))
-        {
-            if (other.gameObject.HasComponent<PickUpItem>())
-            {
-                ItemPickUp(other.gameObject);
-            }
-        }
-    }
 
     private void OnCollisionStay(Collision other)
     {
