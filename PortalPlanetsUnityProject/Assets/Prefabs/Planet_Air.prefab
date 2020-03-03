@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3175159745076041786}
   - component: {fileID: 3175159745076041790}
   m_Layer: 8
-  m_Name: Planet
+  m_Name: Planet_Air
   m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 5565f8e1a3495434ab60880a163cb8ac, type: 3}
+  - {fileID: 2100000, guid: 44a1903e15a485242b9bb5ad5de1cd0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

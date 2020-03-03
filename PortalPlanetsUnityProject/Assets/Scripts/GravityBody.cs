@@ -20,11 +20,5 @@ public class GravityBody : MonoBehaviour
         planet.Attract(_rb);
     }
 
-/*    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "Planet")
-        {
-            planet = other.gameObject.GetComponent<GravityAttractor>();
-        }
-    }*/
+
 }
