@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate()
     {
         Transform myTransform = transform;
-        _offset = (_cameraTargetToFollow.transform.up.normalized * 10 + -_cameraTargetToFollow.transform.forward.normalized*5);
+        _offset = (_cameraTargetToFollow.transform.up.normalized * 10 + -_cameraTargetToFollow.transform.forward.normalized * 5);
         Vector3 newPos = _cameraTargetToFollow.position + _offset;
         Vector3 smoothedPos = Vector3.SmoothDamp(myTransform.position, newPos, ref _velocity, smoothSpeed);
 
