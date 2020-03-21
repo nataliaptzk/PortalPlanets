@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class ChunksControl : MonoBehaviour
@@ -27,9 +28,9 @@ public class ChunksControl : MonoBehaviour
         foreach (var child in _children)
         {
             var temp = (child.localPosition - middle).normalized;
-
             var random = Random.Range(1.2f, 2.5f);
-            child.localPosition += (temp * random);
+            var newPosition = child.localPosition + temp * random;
+            LeanTween.moveLocal(child.gameObject, newPosition, .7f).setEase(LeanTweenType.easeInOutSine);
         }
     }
 
