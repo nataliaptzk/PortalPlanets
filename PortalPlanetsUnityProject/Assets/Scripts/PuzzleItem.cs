@@ -3,20 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PuzzleController : MonoBehaviour
+public class PuzzleItem : MonoBehaviour
 {
-    public int id;
+    public PuzzleTypes.Puzzles type;
 
     private void Start()
     {
         CustomEvents.current.onPuzzleTriggerEnter += OnPuzzleEnter;
     }
 
-    private void OnPuzzleEnter(int areaId)
+    private void OnPuzzleEnter(PuzzleTypes.Puzzles areaType)
     {
-        if (areaId == id) // check if it matches with the puzzleArea ID
+        if (areaType == type) // check if it matches with the puzzleArea ID
         {
-            Debug.Log("puzzle in area " + areaId);
+            Debug.Log("puzzle in area " + areaType);
         }
     }
 
@@ -24,6 +24,5 @@ public class PuzzleController : MonoBehaviour
     private void OnDestroy()
     {
         CustomEvents.current.onPuzzleTriggerEnter -= OnPuzzleEnter;
-
     }
 }

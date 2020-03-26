@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PuzzleTriggerArea : MonoBehaviour
 {
-    public int id;
+    public PuzzleTypes.Puzzles type;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other is CapsuleCollider && other.CompareTag("PuzzleItem"))
         {
-            if (other.GetComponent<PuzzleController>().id == id)
+            if (other.GetComponent<PuzzleItem>().type == type)
             {
-                CustomEvents.current.PuzzleTriggerEnter(id); // dispatch event
+                CustomEvents.current.PuzzleTriggerEnter(type); // dispatch event
             }
         }
     }

@@ -30,7 +30,7 @@ public class ChunksControl : MonoBehaviour
             var temp = (child.localPosition - middle).normalized;
             var random = Random.Range(1.2f, 2.5f);
             var newPosition = child.localPosition + temp * random;
-            LeanTween.moveLocal(child.gameObject, newPosition, .7f).setEase(LeanTweenType.easeInOutSine);
+            LeanTween.moveLocal(child.gameObject, newPosition, .7f).setEase(LeanTweenType.easeInOutQuint);
         }
     }
 

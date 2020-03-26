@@ -7,9 +7,11 @@ using UnityEngine;
 public class PickUpItem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _messageText;
+    private Transform _parent;
 
     private void Start()
     {
+        _parent = transform.parent;
         _messageText = GameObject.FindWithTag("MessageText").gameObject.GetComponent<TextMeshProUGUI>();
     }
 
@@ -29,7 +31,7 @@ public class PickUpItem : MonoBehaviour
         RemoveMessage();
         GetComponent<GravityBody>().enabled = true;
         GetComponent<Rigidbody>().isKinematic = false;
-        transform.SetParent(null);
+        transform.SetParent(_parent);
     }
 
     private void OnTriggerStay(Collider other)
