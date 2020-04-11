@@ -25,6 +25,10 @@ public class PuzzleItem : MonoBehaviour
             {
                 {
                     triggerArea.ChangeSolved(findIndex, true, gameObject.GetComponent<GravityBody>().planet.gameObject.GetComponent<PuzzlesOnThePlanet>());
+                   var newPosition = triggerArea.AssignSlot(findIndex, true);
+                   gameObject.transform.SetPositionAndRotation(newPosition, Quaternion.identity);
+                   gameObject.GetComponent<GravityBody>().enabled = false;
+                   gameObject.GetComponent<PickUpItem>().enabled = false;
                 }
             }
         }
@@ -41,6 +45,9 @@ public class PuzzleItem : MonoBehaviour
             {
                 {
                     triggerArea.ChangeSolved(findIndex, false, gameObject.GetComponent<GravityBody>().planet.gameObject.GetComponent<PuzzlesOnThePlanet>());
+                    triggerArea.AssignSlot(findIndex, false);
+                    //gameObject.GetComponent<GravityBody>().enabled = true;
+
                 }
             }
         }

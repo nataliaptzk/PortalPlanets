@@ -14,13 +14,26 @@ public class PuzzleTriggerArea : MonoBehaviour
         public bool isSolved;
     }
 
+    [Serializable]
+    public class Slots
+    {
+        public GameObject slot;
+        public bool isEmpty;
+
+        public Slots(GameObject slot, bool isEmpty)
+        {
+            this.slot = slot;
+            this.isEmpty = isEmpty;
+        }
+    }
+
     public bool isPuzzleAreaFinished;
 
     private PuzzleManager _puzzleManager;
 
     public List<SinglePuzzle> multiPuzzles = new List<SinglePuzzle>();
 
-    public List<GameObject> slotsForItems = new List<GameObject>();
+    public List<Slots> slotsForItems = new List<Slots>();
 
     [SerializeField] private GameObject _slotPrefab;
 
@@ -33,7 +46,7 @@ public class PuzzleTriggerArea : MonoBehaviour
 
     private void PopulateSlots()
     {
-        Vector3 centre = new Vector3(0, 0, 0);
+        Vector3 centre = transform.GetChild(0).transform.position;
 
 
         if (multiPuzzles.Count > 1)
@@ -43,15 +56,47 @@ public class PuzzleTriggerArea : MonoBehaviour
                 int angle = 360 / multiPuzzles.Count * i;
                 Vector3 pos = NextPositionInCircle(centre, 1.0f, angle);
 
-                GameObject slot = Instantiate(_slotPrefab, pos, Quaternion.identity, gameObject.transform);
-                slotsForItems.Add(slot);
+                GameObject slot = Instantiate(_slotPrefab, pos, Quaternion.identity, transform.GetChild(0).transform);
+                slotsForItems.Add(new Slots(slot, true));
+
+                var mainModule = slot.GetComponent<ParticleSystem>().main;
+
+                switch (multiPuzzles[i].type)
+                {
+                    case PuzzleTypes.Puzzles.FIRE:
+                    {
+                        mainModule.startColor = Color.red;
+                        break;
+                    }
+                    case PuzzleTypes.Puzzles.WIND:
+                    {
+                        mainModule.startColor = Color.magenta;
+                        break;
+                    }
+                    case PuzzleTypes.Puzzles.EARTH:
+                    {
+                        mainModule.startColor = Color.green;
+                        break;
+                    }
+                    case PuzzleTypes.Puzzles.WATER:
+                    {
+                        mainModule.startColor = Color.blue;
+                        break;
+                    }
+                    case PuzzleTypes.Puzzles.AETHER:
+                    {
+                        mainModule.startColor = Color.white;
+                        break;
+                    }
+                }
             }
+
+            transform.GetChild(0).transform.localRotation = transform.rotation;
         }
         else if (multiPuzzles.Count == 1)
         {
-
-            GameObject slot = Instantiate(_slotPrefab, centre, Quaternion.identity, gameObject.transform);
-            slotsForItems.Add(slot);
+            GameObject slot = Instantiate(_slotPrefab, centre, Quaternion.identity, transform.GetChild(0).transform);
+            slotsForItems.Add(new Slots(slot, true));
         }
     }
 
@@ -100,5 +145,12 @@ public class PuzzleTriggerArea : MonoBehaviour
         }
 
         return true;
+    }
+
+    public Vector3 AssignSlot(int i, bool value)
+    {
+        slotsForItems[i].isEmpty = value;
+
+        return slotsForItems[i].slot.transform.position;
     }
 }
