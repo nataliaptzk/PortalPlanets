@@ -43,8 +43,7 @@ public class ThirdPersonController : MonoBehaviour
 
         _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .15f);
 
-        transform.Rotate(0, x * 360f * Time.deltaTime, 0);
-
+        transform.Rotate(0, x * 360f * Time.deltaTime, 0, Space.Self);
 
         if (Input.GetButtonDown("Jump"))
         {
