@@ -19,18 +19,7 @@ public class PuzzleTriggerArea : MonoBehaviour
     {
         if (other is CapsuleCollider && other.CompareTag("PuzzleItem"))
         {
-            var itemPuzzle = other.GetComponent<PuzzleItem>();
-
-            var temp = multiPuzzles.FindIndex(puzzle =>
-                puzzle.type == itemPuzzle.type && !puzzle.isSolved);
-
-            if (temp >= 0) // check if there's a puzzle in the puzzles list that matches the type of the brought item and is not solved
-            {
-                {
-                    CustomEvents.current.PuzzleTriggerEnter(multiPuzzles[temp].type); // dispatch event
-                    multiPuzzles[temp].isSolved = true;
-                }
-            }
+            CustomEvents.current.PuzzleTriggerEnter(this, other.gameObject); // dispatch event
         }
     }
 
@@ -38,16 +27,7 @@ public class PuzzleTriggerArea : MonoBehaviour
     {
         if (other is CapsuleCollider && other.CompareTag("PuzzleItem"))
         {
-            var itemPuzzle = other.GetComponent<PuzzleItem>();
-
-            var index = multiPuzzles.FindIndex(puzzle =>
-                puzzle.type == itemPuzzle.type && !puzzle.isSolved);
-
-            if (index >= 0) // check if there's a puzzle in the puzzles list that matches the type of the brought item and is not solved
-            {
-                CustomEvents.current.PuzzleTriggerExit(multiPuzzles[index].type); // dispatch event
-                multiPuzzles[index].isSolved = true;
-            }
+            CustomEvents.current.PuzzleTriggerExit(this, other.gameObject); // dispatch event
         }
     }
 }

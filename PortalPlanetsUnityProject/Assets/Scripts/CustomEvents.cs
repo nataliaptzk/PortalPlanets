@@ -12,24 +12,24 @@ public class CustomEvents : MonoBehaviour
         current = this;
     }
 
-    public event Action<PuzzleTypes.Puzzles> OnPuzzleTriggerEnter;
+    public event Action<PuzzleTriggerArea, GameObject> OnPuzzleTriggerEnter;
 
-    public void PuzzleTriggerEnter(PuzzleTypes.Puzzles type)
+    public void PuzzleTriggerEnter(PuzzleTriggerArea triggerArea, GameObject puzzleItem)
     {
         if (OnPuzzleTriggerEnter != null)
         {
-            OnPuzzleTriggerEnter(type);
+            OnPuzzleTriggerEnter(triggerArea, puzzleItem);
         }
     }
-    
-    
-    public event Action<PuzzleTypes.Puzzles> OnPuzzleTriggerExit;
 
-    public void PuzzleTriggerExit(PuzzleTypes.Puzzles type)
+
+    public event Action<PuzzleTriggerArea, GameObject> OnPuzzleTriggerExit;
+
+    public void PuzzleTriggerExit(PuzzleTriggerArea triggerArea, GameObject puzzleItem)
     {
         if (OnPuzzleTriggerExit != null)
         {
-            OnPuzzleTriggerExit(type);
+            OnPuzzleTriggerExit(triggerArea, puzzleItem);
         }
     }
 }
