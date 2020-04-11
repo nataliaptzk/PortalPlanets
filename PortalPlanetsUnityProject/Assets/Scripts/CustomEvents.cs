@@ -12,13 +12,24 @@ public class CustomEvents : MonoBehaviour
         current = this;
     }
 
-    public event Action<PuzzleTypes.Puzzles> onPuzzleTriggerEnter;
+    public event Action<PuzzleTypes.Puzzles> OnPuzzleTriggerEnter;
 
     public void PuzzleTriggerEnter(PuzzleTypes.Puzzles type)
     {
-        if (onPuzzleTriggerEnter != null)
+        if (OnPuzzleTriggerEnter != null)
         {
-            onPuzzleTriggerEnter(type);
+            OnPuzzleTriggerEnter(type);
+        }
+    }
+    
+    
+    public event Action<PuzzleTypes.Puzzles> OnPuzzleTriggerExit;
+
+    public void PuzzleTriggerExit(PuzzleTypes.Puzzles type)
+    {
+        if (OnPuzzleTriggerExit != null)
+        {
+            OnPuzzleTriggerExit(type);
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _messageText;
+    private TextMeshProUGUI _messageText;
     private Transform _parent;
 
     private void Start()

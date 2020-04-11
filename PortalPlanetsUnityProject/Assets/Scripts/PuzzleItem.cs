@@ -9,12 +9,21 @@ public class PuzzleItem : MonoBehaviour
 
     private void Start()
     {
-        CustomEvents.current.onPuzzleTriggerEnter += OnPuzzleEnter;
+        CustomEvents.current.OnPuzzleTriggerEnter += OnPuzzleEnter;
+        CustomEvents.current.OnPuzzleTriggerEnter += OnPuzzleExit;
     }
 
     private void OnPuzzleEnter(PuzzleTypes.Puzzles areaType)
     {
-        if (areaType == type) // check if it matches with the puzzleArea ID
+        if (areaType == type) // check if it matches with the puzzleArea type
+        {
+            Debug.Log("puzzle in area " + areaType);
+        }
+    }
+    
+    private void OnPuzzleExit(PuzzleTypes.Puzzles areaType)
+    {
+        if (areaType == type) // check if it matches with the puzzleArea type
         {
             Debug.Log("puzzle in area " + areaType);
         }
@@ -23,6 +32,8 @@ public class PuzzleItem : MonoBehaviour
 
     private void OnDestroy()
     {
-        CustomEvents.current.onPuzzleTriggerEnter -= OnPuzzleEnter;
+        CustomEvents.current.OnPuzzleTriggerEnter -= OnPuzzleEnter;
+        CustomEvents.current.OnPuzzleTriggerEnter -= OnPuzzleExit;
+
     }
 }
