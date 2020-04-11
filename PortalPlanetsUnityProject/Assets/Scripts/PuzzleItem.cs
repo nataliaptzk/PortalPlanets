@@ -28,7 +28,7 @@ public class PuzzleItem : MonoBehaviour
                    var newPosition = triggerArea.AssignSlot(findIndex, true);
                    gameObject.transform.SetPositionAndRotation(newPosition, Quaternion.identity);
                    gameObject.GetComponent<GravityBody>().enabled = false;
-                   gameObject.GetComponent<PickUpItem>().enabled = false;
+                   gameObject.GetComponent<PickUpItem>().ItemDrop(false);
                 }
             }
         }

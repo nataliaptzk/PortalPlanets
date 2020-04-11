@@ -19,6 +19,8 @@ public class PickUpItem : MonoBehaviour
     {
         if (player.GetComponent<ThirdPersonController>().PickUpSlot.transform.childCount == 0)
         {
+           // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;;
             transform.SetParent(player.GetComponent<ThirdPersonController>().PickUpSlot);
             transform.localPosition = Vector3.zero;
             GetComponent<Rigidbody>().isKinematic = true;
@@ -26,12 +28,16 @@ public class PickUpItem : MonoBehaviour
         }
     }
 
-    public void ItemDrop()
+    public void ItemDrop(bool value)
     {
         RemoveMessage();
-        GetComponent<GravityBody>().enabled = true;
+        GetComponent<GravityBody>().enabled = value;
         GetComponent<Rigidbody>().isKinematic = false;
         transform.SetParent(_parent);
+        if (!value)
+        {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -39,7 +45,7 @@ public class PickUpItem : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             DisplayMessage();
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 ItemPickUp(other.gameObject);
             }

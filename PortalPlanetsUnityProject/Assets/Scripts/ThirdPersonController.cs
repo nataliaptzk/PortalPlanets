@@ -53,9 +53,9 @@ public class ThirdPersonController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0) && _pickUpSlot.transform.childCount == 1)
+        if (Input.GetMouseButton(1) && _pickUpSlot.transform.childCount == 1)
         {
-            _pickUpSlot.transform.GetChild(0).gameObject.GetComponent<PickUpItem>().ItemDrop();
+            _pickUpSlot.transform.GetChild(0).gameObject.GetComponent<PickUpItem>().ItemDrop(true);
         }
     }
 
