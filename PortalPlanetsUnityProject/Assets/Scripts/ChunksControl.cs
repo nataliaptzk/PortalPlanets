@@ -9,6 +9,13 @@ public class ChunksControl : MonoBehaviour
 {
     [SerializeField] private List<Transform> _children;
     [SerializeField] private List<Vector3> _initialPosition;
+    private Camera _mainCamera;
+
+    private void Start()
+    {
+        _mainCamera = Camera.main;
+    }
+
 
     [ContextMenu("ReadChildren")]
     public void ReadChildren()
@@ -31,6 +38,8 @@ public class ChunksControl : MonoBehaviour
             var random = Random.Range(1.2f, 2.5f);
             var newPosition = child.localPosition + temp * random;
             LeanTween.moveLocal(child.gameObject, newPosition, .7f).setEase(LeanTweenType.easeInBack);
+       //     LeanTween.moveLocal(_mainCamera.gameObject, _mainCamera.gameObject.transform.position, .2f).setEase(LeanTweenType.easeInOutElastic);
+            
         }
     }
 
@@ -39,7 +48,10 @@ public class ChunksControl : MonoBehaviour
     {
         for (int i = 0; i < _children.Count; i++)
         {
-            _children[i].position = _initialPosition[i];
+          //  LeanTween.moveLocal(_children[i].gameObject, _initialPosition[i], .7f).setEase(LeanTweenType.easeInBack);
+            LeanTween.move(_children[i].gameObject, _initialPosition[i], .7f).setEase(LeanTweenType.easeInBack);
+
+           // _children[i].position = _initialPosition[i];
         }
     }
 }
