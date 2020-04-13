@@ -9,8 +9,6 @@ public class ThirdPersonController : MonoBehaviour
 
     [SerializeField] private float _backWalkSpeed;
 
-//    [SerializeField] private float _jumpForce;
-//    [SerializeField] private LayerMask _groundedLayerMask;
     [SerializeField] private Transform _pickUpSlot;
 
     public Transform PickUpSlot => _pickUpSlot;
@@ -56,21 +54,4 @@ public class ThirdPersonController : MonoBehaviour
         Vector3 localMove = transform.TransformDirection(_moveAmount) * Time.fixedDeltaTime;
         _rigidbody.MovePosition(_rigidbody.position + localMove);
     }
-
-
-    /*private void OnCollisionStay(Collision other)
-    {
-        if ((_groundedLayerMask.value & 1 << other.gameObject.layer) == 1 << other.gameObject.layer) // check for ground
-        {
-            _grounded = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-        if ((_groundedLayerMask.value & 1 << other.gameObject.layer) == 1 << other.gameObject.layer) // check for ground
-        {
-            _grounded = false;
-        }
-    }*/
 }
