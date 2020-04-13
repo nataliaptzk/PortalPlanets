@@ -25,10 +25,11 @@ public class PuzzleItem : MonoBehaviour
             {
                 {
                     triggerArea.ChangeSolved(findIndex, true, gameObject.GetComponent<GravityBody>().planet.gameObject.GetComponent<PuzzlesOnThePlanet>());
-                   var newPosition = triggerArea.AssignSlot(findIndex, true);
-                   gameObject.transform.SetPositionAndRotation(newPosition, Quaternion.identity);
-                   gameObject.GetComponent<GravityBody>().enabled = false;
-                   gameObject.GetComponent<PickUpItem>().ItemDrop(false);
+                    var newPosition = triggerArea.AssignSlot(findIndex, true);
+                    triggerArea.multiPuzzles[findIndex].snappedItem = gameObject;
+                    gameObject.transform.SetPositionAndRotation(newPosition, Quaternion.identity);
+                    gameObject.GetComponent<GravityBody>().enabled = false;
+                    gameObject.GetComponent<PickUpItem>().ItemDrop(false);
                 }
             }
         }
@@ -41,13 +42,15 @@ public class PuzzleItem : MonoBehaviour
             var findIndex = triggerArea.multiPuzzles.FindIndex(puzzle =>
                 puzzle.type == type && puzzle.isSolved);
 
-            if (findIndex >= 0) // check if there's a puzzle in the puzzles list that matches the type of the puzzle item and is solved, if -1 = item not found
+            if (findIndex >= 0 && triggerArea.multiPuzzles[findIndex].snappedItem == gameObject
+            ) // check if there's a puzzle in the puzzles list that matches the type of the puzzle item and is solved, if -1 = item not found
             {
                 {
                     triggerArea.ChangeSolved(findIndex, false, gameObject.GetComponent<GravityBody>().planet.gameObject.GetComponent<PuzzlesOnThePlanet>());
                     triggerArea.AssignSlot(findIndex, false);
-                    //gameObject.GetComponent<GravityBody>().enabled = true;
+                    triggerArea.multiPuzzles[findIndex].snappedItem = null;
 
+                    //gameObject.GetComponent<GravityBody>().enabled = true;
                 }
             }
         }

@@ -12,6 +12,7 @@ public class PuzzleTriggerArea : MonoBehaviour
     {
         public PuzzleTypes.Puzzles type;
         public bool isSolved;
+        public GameObject snappedItem;
     }
 
     [Serializable]
