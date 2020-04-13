@@ -76,33 +76,58 @@ public class PuzzleTriggerArea : MonoBehaviour
 
     private void ChangeParticleColour(GameObject slot, int i)
     {
-        var mainModule = slot.GetComponent<ParticleSystem>().main;
+        var mainModule = slot.GetComponentsInChildren<ParticleSystem>();
 
         switch (multiPuzzles[i].type)
         {
             case PuzzleTypes.Puzzles.FIRE:
             {
-                mainModule.startColor = Color.red;
+                foreach (var module in mainModule)
+                {
+                    var moduleMain = module.main;
+                    moduleMain.startColor = Color.red;
+                }
+
                 break;
             }
             case PuzzleTypes.Puzzles.WIND:
             {
-                mainModule.startColor = Color.magenta;
+                foreach (var module in mainModule)
+                {
+                    var moduleMain = module.main;
+                    moduleMain.startColor = Color.magenta;
+                }
+
                 break;
             }
             case PuzzleTypes.Puzzles.EARTH:
             {
-                mainModule.startColor = Color.green;
+                foreach (var module in mainModule)
+                {
+                    var moduleMain = module.main;
+                    moduleMain.startColor = Color.green;
+                }
+
                 break;
             }
             case PuzzleTypes.Puzzles.WATER:
             {
-                mainModule.startColor = Color.blue;
+                foreach (var module in mainModule)
+                {
+                    var moduleMain = module.main;
+                    moduleMain.startColor = Color.blue;
+                }
+
                 break;
             }
             case PuzzleTypes.Puzzles.AETHER:
             {
-                mainModule.startColor = Color.white;
+                foreach (var module in mainModule)
+                {
+                    var moduleMain = module.main;
+                    moduleMain.startColor = Color.white;
+                }
+
                 break;
             }
         }
