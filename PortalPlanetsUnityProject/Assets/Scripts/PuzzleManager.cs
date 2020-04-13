@@ -41,10 +41,18 @@ public class PuzzleManager : MonoBehaviour
             if (_planetsWithPuzzles[findPlanetIndex].planet._puzzleTriggers.Exists(area => area.isPuzzleAreaFinished == false))
             {
                 _planetsWithPuzzles[findPlanetIndex].planetSolved = false;
+                if (planetWithPuzzles.isBeamOn)
+                {
+                    planetWithPuzzles.BeamOff();
+                }
             }
             else
             {
                 _planetsWithPuzzles[findPlanetIndex].planetSolved = true;
+                if (!planetWithPuzzles.isBeamOn)
+                {
+                    planetWithPuzzles.BeamOn();
+                }
             }
         }
 

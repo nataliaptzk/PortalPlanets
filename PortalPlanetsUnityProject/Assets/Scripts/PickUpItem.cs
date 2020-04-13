@@ -9,9 +9,11 @@ public class PickUpItem : MonoBehaviour
     private TextMeshProUGUI _messageText;
     private MessageBoxAnimation _messageBoxAnimation;
     private Transform _parent;
+    private ThirdPersonController _player;
 
     private void Start()
     {
+        _player = FindObjectOfType<ThirdPersonController>();
         _parent = transform.parent;
         _messageText = GameObject.FindWithTag("MessageText").gameObject.GetComponent<TextMeshProUGUI>();
         _messageBoxAnimation = _messageText.transform.parent.gameObject.GetComponent<MessageBoxAnimation>();
@@ -25,7 +27,7 @@ public class PickUpItem : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<GravityBody>().enabled = false;
         DisplayMessage("Press SPACE again to drop the item or find the puzzle area");
-        player.GetComponent<ThirdPersonController>().holdingItem = true;
+        _player.holdingItem = true;
     }
 
     public void ItemDrop(bool value)
@@ -38,6 +40,8 @@ public class PickUpItem : MonoBehaviour
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
+
+        _player.holdingItem = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,15 +56,14 @@ public class PickUpItem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (Input.GetButtonDown("Jump") && !other.GetComponent<ThirdPersonController>().holdingItem)
+            if (Input.GetButtonDown("Jump") && !_player.holdingItem)
             {
                 RemoveMessage();
                 ItemPickUp(other.gameObject);
             }
-            else if (Input.GetButtonDown("Jump") && other.GetComponent<ThirdPersonController>().holdingItem)
+            else if (Input.GetButtonDown("Jump") && _player.holdingItem)
             {
                 ItemDrop(true);
-                other.GetComponent<ThirdPersonController>().holdingItem = false;
             }
         }
     }
