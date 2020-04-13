@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1f1996eea3e094e98bfb1d9fbdc0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: -3
+  _rotationSpeed: -4
   _lookAt: {x: 200, y: 0, z: 0}
 --- !u!4 &660265631 stripped
 Transform:

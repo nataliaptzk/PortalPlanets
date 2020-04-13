@@ -6,12 +6,15 @@ using System.Collections;
 public class ThirdPersonController : MonoBehaviour
 {
     [SerializeField] private float _walkSpeed;
+
     [SerializeField] private float _backWalkSpeed;
-    [SerializeField] private float _jumpForce;
-    [SerializeField] private LayerMask _groundedLayerMask;
+
+//    [SerializeField] private float _jumpForce;
+//    [SerializeField] private LayerMask _groundedLayerMask;
     [SerializeField] private Transform _pickUpSlot;
 
     public Transform PickUpSlot => _pickUpSlot;
+    public bool holdingItem;
 
     private bool _grounded;
     private float _verticalLookRotation;
@@ -22,6 +25,7 @@ public class ThirdPersonController : MonoBehaviour
 
     void Awake()
     {
+        holdingItem = false;
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -44,19 +48,6 @@ public class ThirdPersonController : MonoBehaviour
         _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .15f);
 
         transform.Rotate(0, x * 360f * Time.deltaTime, 0, Space.Self);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (_grounded)
-            {
-                _rigidbody.AddForce(transform.up * _jumpForce);
-            }
-        }
-
-        if (Input.GetMouseButton(1) && _pickUpSlot.transform.childCount == 1)
-        {
-            _pickUpSlot.transform.GetChild(0).gameObject.GetComponent<PickUpItem>().ItemDrop(true);
-        }
     }
 
 
@@ -67,7 +58,7 @@ public class ThirdPersonController : MonoBehaviour
     }
 
 
-    private void OnCollisionStay(Collision other)
+    /*private void OnCollisionStay(Collision other)
     {
         if ((_groundedLayerMask.value & 1 << other.gameObject.layer) == 1 << other.gameObject.layer) // check for ground
         {
@@ -81,5 +72,5 @@ public class ThirdPersonController : MonoBehaviour
         {
             _grounded = false;
         }
-    }
+    }*/
 }
