@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
@@ -13,6 +16,20 @@ public class PuzzleManager : MonoBehaviour
     }
 
     [SerializeField] private List<PlanetPuzzle> _planetsWithPuzzles = new List<PlanetPuzzle>();
+    [SerializeField] private TextMeshProUGUI _puzzlesCountUI;
+
+    public int puzzleCount;
+    public int puzzleSolvedCount;
+
+    private void Start()
+    {
+        DisplayPuzzleAmount();
+    }
+
+    private void DisplayPuzzleAmount()
+    {
+        _puzzlesCountUI.text = puzzleSolvedCount + " / " + puzzleCount;
+    }
 
     public void CheckIfPlanetAllPuzzlesAreSolved(PuzzlesOnThePlanet planetWithPuzzles)
     {
@@ -31,7 +48,30 @@ public class PuzzleManager : MonoBehaviour
             }
         }
 
+
+        CheckHowManyAreSolvedOnThePlanet();
+
+        DisplayPuzzleAmount();
         CheckIfAllPlanetsAreSolved();
+    }
+
+    private void CheckHowManyAreSolvedOnThePlanet()
+    {
+        int solvedCount = 0;
+
+
+        for (int i = 0; i < _planetsWithPuzzles.Count; i++)
+        {
+            for (int j = 0; j < _planetsWithPuzzles[i].planet._puzzleTriggers.Count; j++)
+            {
+                if (_planetsWithPuzzles[i].planet._puzzleTriggers[j].isPuzzleAreaFinished)
+                {
+                    solvedCount++;
+                }
+            }
+        }
+
+        puzzleSolvedCount = solvedCount;
     }
 
     private void CheckIfAllPlanetsAreSolved()

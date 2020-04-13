@@ -40,6 +40,7 @@ public class PuzzleTriggerArea : MonoBehaviour
     private void Awake()
     {
         _puzzleManager = FindObjectOfType<PuzzleManager>();
+        _puzzleManager.puzzleCount++;
         PopulateSlots();
     }
 
@@ -68,7 +69,7 @@ public class PuzzleTriggerArea : MonoBehaviour
         {
             GameObject slot = Instantiate(_slotPrefab, centre, Quaternion.identity, transform.GetChild(0).transform);
             slotsForItems.Add(new Slots(slot, true));
-            
+
             ChangeParticleColour(slot, 0);
         }
     }
