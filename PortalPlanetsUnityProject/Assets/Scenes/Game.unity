@@ -2835,7 +2835,8 @@ MonoBehaviour:
   m_text: 'Congratulations!
 
 
-    You repaired the lost connections! now all planets thrive and the core is restored!'
+    You repaired the lost connections! now all planets supply energy and the core
+    is restored!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bed28971a759408419bb4fee35f0966c, type: 2}
   m_sharedMaterial: {fileID: -1506654450782838604, guid: bed28971a759408419bb4fee35f0966c,
@@ -4163,8 +4164,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "The core planet exploded and all planets\n lost their connections.\n\nFind
-    all gems and put them back in their slots\n to repair the core!\n"
+  m_text: "The planets lost their connections with the core! \nThe core does not have
+    enough energy.\n\nFind all energy cubes and put them back in their slots\nto repair
+    the energy connections!\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bed28971a759408419bb4fee35f0966c, type: 2}
   m_sharedMaterial: {fileID: -1506654450782838604, guid: bed28971a759408419bb4fee35f0966c,
