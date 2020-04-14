@@ -4839,10 +4839,21 @@ MonoBehaviour:
     type: 3}
   _colors:
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0.6415094, g: 0, b: 0.53353256, a: 1}
+  - {r: 0.227451, g: 0.16078432, b: 0.63529414, a: 1}
   - {r: 0, g: 0.6037736, b: 0.11279283, a: 1}
   - {r: 0, g: 0.7320246, b: 0.9339623, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
+  _materials:
+  - {fileID: 2100000, guid: c1840f238d72de24e9cd6f5fd8b2271f, type: 2}
+  - {fileID: 2100000, guid: c2686c9dc4039854f952227722922ea0, type: 2}
+  - {fileID: 2100000, guid: 5537b7d776e683644bb21e2c866cafd7, type: 2}
+  - {fileID: 2100000, guid: b9ac96ce1ffd0804c884c6115a3762e5, type: 2}
+  - {fileID: 2100000, guid: a709d6734d87c00479df862586bf5d40, type: 2}
+  - {fileID: 2100000, guid: ff3f4cde2452b5a418f04fe5fecbd905, type: 2}
+  - {fileID: 2100000, guid: 7b49936787080d64e91d45929d4fdc0f, type: 2}
+  - {fileID: 2100000, guid: df298c24c1e43dd4c90290bedc01bba7, type: 2}
+  - {fileID: 2100000, guid: 6ebbc8283f0474544b6c0da6589bdf42, type: 2}
+  - {fileID: 2100000, guid: 4da83b12f78798a48b0ac0e593e283e5, type: 2}
 --- !u!1 &5150113759859320057
 GameObject:
   m_ObjectHideFlags: 0

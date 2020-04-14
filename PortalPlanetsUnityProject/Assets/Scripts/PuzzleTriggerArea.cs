@@ -38,6 +38,7 @@ public class PuzzleTriggerArea : MonoBehaviour
 
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] List<Color> _colors = new List<Color>();
+    [SerializeField] List<Material> _materials = new List<Material>();
 
     private void Awake()
     {
@@ -78,56 +79,58 @@ public class PuzzleTriggerArea : MonoBehaviour
 
     private void ChangeParticleColour(GameObject slot, int i)
     {
-        var mainModule = slot.GetComponentsInChildren<ParticleSystem>();
+        var particleSystems = slot.GetComponentsInChildren<ParticleSystemRenderer>();
 
         switch (multiPuzzles[i].type)
         {
             case PuzzleTypes.Puzzles.FIRE:
             {
-                foreach (var module in mainModule)
+                foreach (var module in particleSystems)
                 {
-                    var moduleMain = module.main;
-                    moduleMain.startColor = _colors[0];
+                    //  var moduleMain = module;
+                    //    moduleMain.startColor = _colors[0];
+                    module.trailMaterial = _materials[0];
+                    module.material = _materials[5];
                 }
 
                 break;
             }
             case PuzzleTypes.Puzzles.WIND:
             {
-                foreach (var module in mainModule)
+                foreach (var module in particleSystems)
                 {
-                    var moduleMain = module.main;
-                    moduleMain.startColor = _colors[1];
+                    module.trailMaterial = _materials[1];
+                    module.material = _materials[6];
                 }
 
                 break;
             }
             case PuzzleTypes.Puzzles.EARTH:
             {
-                foreach (var module in mainModule)
+                foreach (var module in particleSystems)
                 {
-                    var moduleMain = module.main;
-                    moduleMain.startColor = _colors[2];
+                    module.trailMaterial = _materials[2];
+                    module.material = _materials[7];
                 }
 
                 break;
             }
             case PuzzleTypes.Puzzles.WATER:
             {
-                foreach (var module in mainModule)
+                foreach (var module in particleSystems)
                 {
-                    var moduleMain = module.main;
-                    moduleMain.startColor = _colors[3];
+                    module.trailMaterial = _materials[3];
+                    module.material = _materials[8];
                 }
 
                 break;
             }
             case PuzzleTypes.Puzzles.AETHER:
             {
-                foreach (var module in mainModule)
+                foreach (var module in particleSystems)
                 {
-                    var moduleMain = module.main;
-                    moduleMain.startColor = _colors[4];
+                    module.trailMaterial = _materials[4];
+                    module.material = _materials[9];
                 }
 
                 break;
