@@ -14,8 +14,12 @@ public class PuzzlesOnThePlanet : MonoBehaviour
     private CameraFollow _camera;
     private PuzzleManager _puzzleManager;
 
+    [SerializeField] private AudioClip _beamOnAudioClip;
+    [SerializeField] private AudioClip _beamOffAudioClip;
+    private AudioSource _audioSource;
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _camera = Camera.main.GetComponent<CameraFollow>();
         _puzzleManager = FindObjectOfType<PuzzleManager>();
         _from = new Vector3(0, 0, 0);
@@ -28,6 +32,10 @@ public class PuzzlesOnThePlanet : MonoBehaviour
     public void BeamOn()
     {
         isBeamOn = true;
+        
+        _audioSource.clip = _beamOnAudioClip;
+        _audioSource.Play();
+        
         _camera.lookAt.position = (Vector3.zero + gameObject.transform.position) / 2;
         _camera.isFollowing = false;
         LeanTween.value(gameObject, _from, _to, _time).setOnUpdate((Vector3 val) => { _beam.SetPosition(1, val); }).setEase(LeanTweenType.easeInQuart).setOnComplete(OnComplete);
@@ -41,6 +49,8 @@ public class PuzzlesOnThePlanet : MonoBehaviour
 
     public void BeamOff(bool value)
     {
+        _audioSource.clip = _beamOffAudioClip;
+        _audioSource.Play();
         _camera.lookAt.position = (Vector3.zero + gameObject.transform.position) / 2;
         _camera.isFollowing = false;
 

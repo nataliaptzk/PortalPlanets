@@ -11,9 +11,14 @@ public class PickUpItem : MonoBehaviour
     private Transform _parent;
     private ThirdPersonController _player;
     private ParticleSystem _ps;
+
+    [SerializeField] private AudioClip _pickUp;
+    [SerializeField] private AudioClip _drop;
+    private AudioSource _audioSource;
     
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _ps = gameObject.GetComponentInChildren<ParticleSystem>();
         _player = FindObjectOfType<ThirdPersonController>();
         _parent = transform.parent;
@@ -23,6 +28,8 @@ public class PickUpItem : MonoBehaviour
 
     private void ItemPickUp(GameObject player)
     {
+        _audioSource.clip = _pickUp;
+        _audioSource.Play();
         _ps.Stop();
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         transform.SetParent(player.GetComponent<ThirdPersonController>().PickUpSlot);
@@ -35,6 +42,8 @@ public class PickUpItem : MonoBehaviour
 
     public void ItemDrop(bool value)
     {
+        _audioSource.clip = _drop;
+        _audioSource.Play();
         RemoveMessage();
         GetComponent<GravityBody>().enabled = value;
         GetComponent<Rigidbody>().isKinematic = false;

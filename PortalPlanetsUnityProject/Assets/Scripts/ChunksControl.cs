@@ -12,8 +12,14 @@ public class ChunksControl : MonoBehaviour
     private CameraFollow _mainCamera;
     private PuzzleManager _puzzleManager;
 
+    [SerializeField] private AudioClip _explosionClip;
+    private AudioSource _audioSource;
+
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.clip = _explosionClip;
+
         _mainCamera = FindObjectOfType<CameraFollow>();
         _puzzleManager = FindObjectOfType<PuzzleManager>();
     }
@@ -47,6 +53,8 @@ public class ChunksControl : MonoBehaviour
 
 
         // move children away from vector 0 normalised
+        _audioSource.Play();
+        
         var middle = Vector3.zero;
         foreach (var child in _children)
         {

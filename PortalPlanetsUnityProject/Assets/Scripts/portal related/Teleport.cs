@@ -7,10 +7,20 @@ public class Teleport : MonoBehaviour
 {
     public Transform teleportDestination;
 
+    [SerializeField] private AudioClip _teloportClip;
+    private AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.clip = _teloportClip;
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            _audioSource.Play();
             other.transform.SetPositionAndRotation(teleportDestination.position, teleportDestination.rotation);
             other.gameObject.GetComponent<GravityBody>().planet = teleportDestination.transform.root.GetComponent<GravityAttractor>(); // find the PLANET parent and take it as gravity attractor point
             

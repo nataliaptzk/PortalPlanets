@@ -27,6 +27,8 @@ public class PuzzleManager : MonoBehaviour
     public int puzzleCount;
     public int puzzleSolvedCount;
 
+   // public 
+    
     private void Awake()
     {
         _pauseMenu = FindObjectOfType<PauseMenu>();
