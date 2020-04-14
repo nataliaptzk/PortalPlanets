@@ -9,11 +9,14 @@ public class ChunksControl : MonoBehaviour
 {
     [SerializeField] private List<Transform> _children;
     [SerializeField] private List<Vector3> _initialPosition;
-    private Camera _mainCamera;
+    private CameraFollow _mainCamera;
+    private PuzzleManager _puzzleManager;
 
     private void Start()
     {
-        _mainCamera = Camera.main;
+        _mainCamera = FindObjectOfType<CameraFollow>();
+        _puzzleManager = FindObjectOfType<PuzzleManager>();
+        StartCoroutine(ExplodeChildren());
     }
 
 
@@ -27,9 +30,19 @@ public class ChunksControl : MonoBehaviour
         }
     }
 
-    [ContextMenu("ExplodeChildren")]
-    public void ExplodeChildren()
+    private IEnumerator ExplodeChildren()
     {
+        _mainCamera.isFollowing = false;
+        _mainCamera.lookAt.position = Vector3.zero;
+
+        foreach (var planet in _puzzleManager.planetsWithPuzzles)
+        {
+            planet.planet.BeamOff(false);
+        }
+
+        yield return new WaitForSeconds(2.5f);
+
+
         // move children away from vector 0 normalised
         var middle = Vector3.zero;
         foreach (var child in _children)
@@ -37,21 +50,26 @@ public class ChunksControl : MonoBehaviour
             var temp = (child.localPosition - middle).normalized;
             var random = Random.Range(1.2f, 2.5f);
             var newPosition = child.localPosition + temp * random;
-            LeanTween.moveLocal(child.gameObject, newPosition, .7f).setEase(LeanTweenType.easeInBack);
-       //     LeanTween.moveLocal(_mainCamera.gameObject, _mainCamera.gameObject.transform.position, .2f).setEase(LeanTweenType.easeInOutElastic);
-            
+            LeanTween.moveLocal(child.gameObject, newPosition, 2f).setEase(LeanTweenType.easeInOutElastic).setOnComplete(OnComplete);
         }
     }
 
-    [ContextMenu("PutTogetherChildren")]
+    private void OnComplete()
+    {
+        StartCoroutine(OnCompleteWait());
+    }
+
+    private IEnumerator OnCompleteWait()
+    {
+        yield return new WaitForSeconds(1f);
+        _mainCamera.isFollowing = true;
+    }
+
     public void PutTogetherChildren()
     {
         for (int i = 0; i < _children.Count; i++)
         {
-          //  LeanTween.moveLocal(_children[i].gameObject, _initialPosition[i], .7f).setEase(LeanTweenType.easeInBack);
             LeanTween.move(_children[i].gameObject, _initialPosition[i], .7f).setEase(LeanTweenType.easeInBack);
-
-           // _children[i].position = _initialPosition[i];
         }
     }
 }

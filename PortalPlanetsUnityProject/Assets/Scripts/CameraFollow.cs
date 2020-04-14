@@ -23,7 +23,8 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        isFollowing = true;
+        lookAt.position = Vector3.zero;
+        isFollowing = false;
     }
 
     private void Update()

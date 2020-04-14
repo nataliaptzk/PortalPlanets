@@ -15,11 +15,19 @@ public class PuzzleManager : MonoBehaviour
         public bool planetSolved;
     }
 
-    [SerializeField] private List<PlanetPuzzle> _planetsWithPuzzles = new List<PlanetPuzzle>();
+     public List<PlanetPuzzle> planetsWithPuzzles = new List<PlanetPuzzle>();
     [SerializeField] private TextMeshProUGUI _puzzlesCountUI;
+    private CameraFollow _camera;
+    private ChunksControl _chunksControl;
 
     public int puzzleCount;
     public int puzzleSolvedCount;
+
+    private void Awake()
+    {
+        _camera = Camera.main.GetComponent<CameraFollow>();
+        _chunksControl = FindObjectOfType<ChunksControl>();
+    }
 
     private void Start()
     {
@@ -33,22 +41,22 @@ public class PuzzleManager : MonoBehaviour
 
     public void CheckIfPlanetAllPuzzlesAreSolved(PuzzlesOnThePlanet planetWithPuzzles)
     {
-        var findPlanetIndex = _planetsWithPuzzles.FindIndex(planet =>
+        var findPlanetIndex = planetsWithPuzzles.FindIndex(planet =>
             planet.planet == planetWithPuzzles);
 
-        for (int i = 0; i < _planetsWithPuzzles[findPlanetIndex].planet._puzzleTriggers.Count; i++)
+        for (int i = 0; i < planetsWithPuzzles[findPlanetIndex].planet._puzzleTriggers.Count; i++)
         {
-            if (_planetsWithPuzzles[findPlanetIndex].planet._puzzleTriggers.Exists(area => area.isPuzzleAreaFinished == false))
+            if (planetsWithPuzzles[findPlanetIndex].planet._puzzleTriggers.Exists(area => area.isPuzzleAreaFinished == false))
             {
-                _planetsWithPuzzles[findPlanetIndex].planetSolved = false;
+                planetsWithPuzzles[findPlanetIndex].planetSolved = false;
                 if (planetWithPuzzles.isBeamOn)
                 {
-                    planetWithPuzzles.BeamOff();
+                    planetWithPuzzles.BeamOff(true);
                 }
             }
             else
             {
-                _planetsWithPuzzles[findPlanetIndex].planetSolved = true;
+                planetsWithPuzzles[findPlanetIndex].planetSolved = true;
                 if (!planetWithPuzzles.isBeamOn)
                 {
                     planetWithPuzzles.BeamOn();
@@ -60,7 +68,7 @@ public class PuzzleManager : MonoBehaviour
         CheckHowManyAreSolvedOnThePlanet();
 
         DisplayPuzzleAmount();
-        CheckIfAllPlanetsAreSolved();
+        //CheckIfAllPlanetsAreSolved();
     }
 
     private void CheckHowManyAreSolvedOnThePlanet()
@@ -68,11 +76,11 @@ public class PuzzleManager : MonoBehaviour
         int solvedCount = 0;
 
 
-        for (int i = 0; i < _planetsWithPuzzles.Count; i++)
+        for (int i = 0; i < planetsWithPuzzles.Count; i++)
         {
-            for (int j = 0; j < _planetsWithPuzzles[i].planet._puzzleTriggers.Count; j++)
+            for (int j = 0; j < planetsWithPuzzles[i].planet._puzzleTriggers.Count; j++)
             {
-                if (_planetsWithPuzzles[i].planet._puzzleTriggers[j].isPuzzleAreaFinished)
+                if (planetsWithPuzzles[i].planet._puzzleTriggers[j].isPuzzleAreaFinished)
                 {
                     solvedCount++;
                 }
@@ -82,9 +90,9 @@ public class PuzzleManager : MonoBehaviour
         puzzleSolvedCount = solvedCount;
     }
 
-    private void CheckIfAllPlanetsAreSolved()
+    public void CheckIfAllPlanetsAreSolved()
     {
-        if (_planetsWithPuzzles.Exists(planet => planet.planetSolved == false))
+        if (planetsWithPuzzles.Exists(planet => planet.planetSolved == false))
         {
             return;
         }
@@ -94,6 +102,9 @@ public class PuzzleManager : MonoBehaviour
 
     private void FinishLevel()
     {
+        _camera.isFollowing = false;
+        _camera.lookAt.position = Vector3.zero;
+        _chunksControl.PutTogetherChildren();
         Debug.Log("Level Finished");
     }
 
