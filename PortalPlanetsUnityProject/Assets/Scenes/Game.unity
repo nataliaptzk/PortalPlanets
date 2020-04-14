@@ -481,6 +481,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1356291668}
+    - target: {fileID: 5717075848515382136, guid: 15b297f5e1ca0b748a883d002c8a455c,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b297f5e1ca0b748a883d002c8a455c, type: 3}
 --- !u!4 &146973356 stripped
@@ -660,6 +665,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 842431250}
+    - target: {fileID: 5717075848515382136, guid: 15b297f5e1ca0b748a883d002c8a455c,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b297f5e1ca0b748a883d002c8a455c, type: 3}
 --- !u!4 &153741887 stripped
@@ -788,6 +798,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1832481649}
+    - target: {fileID: 5717075848515382136, guid: 15b297f5e1ca0b748a883d002c8a455c,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b297f5e1ca0b748a883d002c8a455c, type: 3}
 --- !u!4 &261387452 stripped
@@ -868,6 +883,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1998795672}
+    - target: {fileID: 5717075848515382136, guid: 3801002a9edac6646857bbd3d7959012,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3801002a9edac6646857bbd3d7959012, type: 3}
 --- !u!4 &288082993 stripped
@@ -1474,6 +1494,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1832481649}
+    - target: {fileID: 5717075848515382136, guid: 7ff22e148ed81784eb67d250e45668f9,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ff22e148ed81784eb67d250e45668f9, type: 3}
 --- !u!4 &353741530 stripped
@@ -1694,6 +1719,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 842431250}
+    - target: {fileID: 5717075848515382136, guid: d50a7ea898c13e14897d8060b8bf024e,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d50a7ea898c13e14897d8060b8bf024e, type: 3}
 --- !u!4 &363954165 stripped
@@ -2287,6 +2317,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1467408511}
+    - target: {fileID: 5717075848515382136, guid: d50a7ea898c13e14897d8060b8bf024e,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d50a7ea898c13e14897d8060b8bf024e, type: 3}
 --- !u!4 &641575555 stripped
@@ -2367,6 +2402,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1356291668}
+    - target: {fileID: 5717075848515382136, guid: 7ff22e148ed81784eb67d250e45668f9,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ff22e148ed81784eb67d250e45668f9, type: 3}
 --- !u!4 &675017375 stripped
@@ -3177,6 +3217,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1998795672}
+    - target: {fileID: 5717075848515382136, guid: d50a7ea898c13e14897d8060b8bf024e,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d50a7ea898c13e14897d8060b8bf024e, type: 3}
 --- !u!4 &891233433 stripped
@@ -3263,6 +3308,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1998795672}
+    - target: {fileID: 5717075848515382136, guid: aa2105d77e3a01d4eb60d2b9a16ace99,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2105d77e3a01d4eb60d2b9a16ace99, type: 3}
 --- !u!4 &920907915 stripped
@@ -5139,6 +5189,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1467408511}
+    - target: {fileID: 5717075848515382136, guid: 3801002a9edac6646857bbd3d7959012,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3801002a9edac6646857bbd3d7959012, type: 3}
 --- !u!4 &1543982358 stripped
@@ -5219,6 +5274,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1832481649}
+    - target: {fileID: 5717075848515382136, guid: aa2105d77e3a01d4eb60d2b9a16ace99,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2105d77e3a01d4eb60d2b9a16ace99, type: 3}
 --- !u!4 &1548597157 stripped
@@ -5716,6 +5776,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1998795672}
+    - target: {fileID: 5717075848515382136, guid: 15b297f5e1ca0b748a883d002c8a455c,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b297f5e1ca0b748a883d002c8a455c, type: 3}
 --- !u!4 &1773607303 stripped
@@ -6245,6 +6310,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 842431250}
+    - target: {fileID: 5717075848515382136, guid: 3801002a9edac6646857bbd3d7959012,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3801002a9edac6646857bbd3d7959012, type: 3}
 --- !u!4 &1824098711 stripped
@@ -6876,6 +6946,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1356291668}
+    - target: {fileID: 5717075848515382136, guid: aa2105d77e3a01d4eb60d2b9a16ace99,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2105d77e3a01d4eb60d2b9a16ace99, type: 3}
 --- !u!4 &1924360992 stripped
@@ -14315,6 +14390,11 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1998795672}
+    - target: {fileID: 5717075848515382136, guid: 7ff22e148ed81784eb67d250e45668f9,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ff22e148ed81784eb67d250e45668f9, type: 3}
 --- !u!4 &2048174649 stripped
@@ -14575,5 +14655,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2927c67b1e080fa42b4f44cc95b58829, type: 2}
+    - target: {fileID: 4546594910213800182, guid: 19fea20c207c8664680b79543812cf8e,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19fea20c207c8664680b79543812cf8e, type: 3}
