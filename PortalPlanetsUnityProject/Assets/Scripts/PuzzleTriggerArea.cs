@@ -37,6 +37,7 @@ public class PuzzleTriggerArea : MonoBehaviour
     public List<Slots> slotsForItems = new List<Slots>();
 
     [SerializeField] private GameObject _slotPrefab;
+    [SerializeField] List<Color> _colors = new List<Color>();
 
     private void Awake()
     {
@@ -49,7 +50,7 @@ public class PuzzleTriggerArea : MonoBehaviour
     private void PopulateSlots()
     {
         Vector3 centre = transform.GetChild(0).transform.position;
-
+        Quaternion rotation = transform.GetChild(0).transform.rotation;
 
         if (multiPuzzles.Count > 1)
         {
@@ -58,7 +59,7 @@ public class PuzzleTriggerArea : MonoBehaviour
                 int angle = 360 / multiPuzzles.Count * i;
                 Vector3 pos = NextPositionInCircle(centre, 1.0f, angle);
 
-                GameObject slot = Instantiate(_slotPrefab, pos, Quaternion.identity, transform.GetChild(0).transform);
+                GameObject slot = Instantiate(_slotPrefab, pos, rotation, transform.GetChild(0).transform);
                 slotsForItems.Add(new Slots(slot, true));
 
                 ChangeParticleColour(slot, i);
@@ -68,7 +69,7 @@ public class PuzzleTriggerArea : MonoBehaviour
         }
         else if (multiPuzzles.Count == 1)
         {
-            GameObject slot = Instantiate(_slotPrefab, centre, Quaternion.identity, transform.GetChild(0).transform);
+            GameObject slot = Instantiate(_slotPrefab, centre, rotation, transform.GetChild(0).transform);
             slotsForItems.Add(new Slots(slot, true));
 
             ChangeParticleColour(slot, 0);
@@ -86,7 +87,7 @@ public class PuzzleTriggerArea : MonoBehaviour
                 foreach (var module in mainModule)
                 {
                     var moduleMain = module.main;
-                    moduleMain.startColor = Color.red;
+                    moduleMain.startColor = _colors[0];
                 }
 
                 break;
@@ -96,7 +97,7 @@ public class PuzzleTriggerArea : MonoBehaviour
                 foreach (var module in mainModule)
                 {
                     var moduleMain = module.main;
-                    moduleMain.startColor = Color.magenta;
+                    moduleMain.startColor = _colors[1];
                 }
 
                 break;
@@ -106,7 +107,7 @@ public class PuzzleTriggerArea : MonoBehaviour
                 foreach (var module in mainModule)
                 {
                     var moduleMain = module.main;
-                    moduleMain.startColor = Color.green;
+                    moduleMain.startColor = _colors[2];
                 }
 
                 break;
@@ -116,7 +117,7 @@ public class PuzzleTriggerArea : MonoBehaviour
                 foreach (var module in mainModule)
                 {
                     var moduleMain = module.main;
-                    moduleMain.startColor = Color.blue;
+                    moduleMain.startColor = _colors[3];
                 }
 
                 break;
@@ -126,7 +127,7 @@ public class PuzzleTriggerArea : MonoBehaviour
                 foreach (var module in mainModule)
                 {
                     var moduleMain = module.main;
-                    moduleMain.startColor = Color.white;
+                    moduleMain.startColor = _colors[4];
                 }
 
                 break;

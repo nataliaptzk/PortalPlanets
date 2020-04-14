@@ -7,9 +7,12 @@ using UnityEngine;
 public class PuzzleItem : MonoBehaviour
 {
     public PuzzleTypes.Puzzles type;
+    private ParticleSystem _ps;
 
     private void Start()
     {
+        _ps = gameObject.GetComponentInChildren<ParticleSystem>();
+
         CustomEvents.current.OnPuzzleTriggerEnter += OnPuzzleEnter;
         CustomEvents.current.OnPuzzleTriggerExit += OnPuzzleExit;
     }
@@ -26,10 +29,12 @@ public class PuzzleItem : MonoBehaviour
                 {
                     triggerArea.ChangeSolved(findIndex, true, gameObject.GetComponent<GravityBody>().planet.gameObject.GetComponent<PuzzlesOnThePlanet>());
                     var newPosition = triggerArea.AssignSlot(findIndex, true);
+
                     triggerArea.multiPuzzles[findIndex].snappedItem = gameObject;
                     gameObject.transform.SetPositionAndRotation(newPosition, Quaternion.identity);
                     gameObject.GetComponent<GravityBody>().enabled = false;
                     gameObject.GetComponent<PickUpItem>().ItemDrop(false);
+                    _ps.Stop();
                 }
             }
         }

@@ -4837,6 +4837,12 @@ MonoBehaviour:
   slotsForItems: []
   _slotPrefab: {fileID: 8684814398427379706, guid: 628f23e1da90e544697a2ae0554fcc30,
     type: 3}
+  _colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.6415094, g: 0, b: 0.53353256, a: 1}
+  - {r: 0, g: 0.6037736, b: 0.11279283, a: 1}
+  - {r: 0, g: 0.7320246, b: 0.9339623, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &5150113759859320057
 GameObject:
   m_ObjectHideFlags: 0
@@ -4893,7 +4899,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5374191410259306767}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5864020394926967367}
@@ -9661,7 +9667,7 @@ ParticleSystemRenderer:
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
-  m_LengthScale: -10
+  m_LengthScale: -70
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
@@ -9900,7 +9906,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.91341454, b: 0.3915094, a: 0.11764706}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

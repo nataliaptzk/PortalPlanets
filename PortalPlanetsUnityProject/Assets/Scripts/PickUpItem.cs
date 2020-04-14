@@ -10,9 +10,11 @@ public class PickUpItem : MonoBehaviour
     private MessageBoxAnimation _messageBoxAnimation;
     private Transform _parent;
     private ThirdPersonController _player;
-
+    private ParticleSystem _ps;
+    
     private void Awake()
     {
+        _ps = gameObject.GetComponentInChildren<ParticleSystem>();
         _player = FindObjectOfType<ThirdPersonController>();
         _parent = transform.parent;
         _messageText = GameObject.FindWithTag("MessageText").gameObject.GetComponent<TextMeshProUGUI>();
@@ -21,6 +23,7 @@ public class PickUpItem : MonoBehaviour
 
     private void ItemPickUp(GameObject player)
     {
+        _ps.Stop();
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         transform.SetParent(player.GetComponent<ThirdPersonController>().PickUpSlot);
         transform.localPosition = Vector3.zero;
@@ -42,6 +45,8 @@ public class PickUpItem : MonoBehaviour
         }
 
         _player.holdingItem = false;
+        _ps.Play();
+
     }
 
     private void OnTriggerEnter(Collider other)
