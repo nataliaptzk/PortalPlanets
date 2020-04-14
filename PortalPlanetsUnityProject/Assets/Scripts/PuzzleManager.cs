@@ -22,18 +22,21 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private GameObject _gameUI;
     private CameraFollow _camera;
     private ChunksControl _chunksControl;
+    private PauseMenu _pauseMenu;
 
     public int puzzleCount;
     public int puzzleSolvedCount;
 
     private void Awake()
     {
+        _pauseMenu = FindObjectOfType<PauseMenu>();
         _camera = Camera.main.GetComponent<CameraFollow>();
         _chunksControl = FindObjectOfType<ChunksControl>();
     }
 
     private void Start()
     {
+        GameScreenActive(false);
         DisplayPuzzleAmount();
     }
 
@@ -107,21 +110,32 @@ public class PuzzleManager : MonoBehaviour
     {
         _camera.isFollowing = false;
         _camera.lookAt.position = Vector3.zero;
+        GameScreenActive(false);
         _chunksControl.PutTogetherChildren();
         yield return new WaitForSeconds(2);
         //open win screen
+        WinScreenActive(true);
+
         Debug.Log("Level Finished");
     }
 
     public void TutorialScreenActive(bool value)
     {
-        _gameUI.SetActive(!value);
         _tutorialScreen.SetActive(value);
     }
 
     public void WinScreenActive(bool value)
     {
-        _gameUI.SetActive(!value);
         _winScreen.SetActive(value);
+    }
+
+    public void GameScreenActive(bool value)
+    {
+        _gameUI.SetActive(value);
+    }
+
+    public void ChangeTimeScale(int value)
+    {
+        Time.timeScale = value;
     }
 }

@@ -12,13 +12,16 @@ public class ChunksControl : MonoBehaviour
     private CameraFollow _mainCamera;
     private PuzzleManager _puzzleManager;
 
-    private void Start()
+    private void Awake()
     {
         _mainCamera = FindObjectOfType<CameraFollow>();
         _puzzleManager = FindObjectOfType<PuzzleManager>();
-        StartCoroutine(ExplodeChildren());
     }
 
+    private void Start()
+    {
+        StartCoroutine(ExplodeChildren());
+    }
 
     [ContextMenu("ReadChildren")]
     public void ReadChildren()
@@ -63,6 +66,8 @@ public class ChunksControl : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         _mainCamera.isFollowing = true;
+        _puzzleManager.TutorialScreenActive(true);
+        _puzzleManager.ChangeTimeScale(0);
     }
 
     public void PutTogetherChildren()

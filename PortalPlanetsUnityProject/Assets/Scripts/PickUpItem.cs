@@ -11,7 +11,7 @@ public class PickUpItem : MonoBehaviour
     private Transform _parent;
     private ThirdPersonController _player;
 
-    private void Start()
+    private void Awake()
     {
         _player = FindObjectOfType<ThirdPersonController>();
         _parent = transform.parent;

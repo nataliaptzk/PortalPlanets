@@ -8,10 +8,12 @@ public class PauseMenu : MonoBehaviour
     private bool isPaused;
     [SerializeField] private GameObject _pauseMenu;
 
-    private void Start()
+    private void Awake()
     {
         isPaused = false;
         _pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+
     }
 
     private void Update()
