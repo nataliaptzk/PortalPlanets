@@ -67,9 +67,11 @@ public class ChunksControl : MonoBehaviour
 
     public void PutTogetherChildren()
     {
+        _mainCamera.lookAt.position = Vector3.zero;
+
         for (int i = 0; i < _children.Count; i++)
         {
-            LeanTween.move(_children[i].gameObject, _initialPosition[i], .7f).setEase(LeanTweenType.easeInBack);
+            LeanTween.move(_children[i].gameObject, _initialPosition[i], 2f).setEase(LeanTweenType.easeInOutElastic);
         }
     }
 }

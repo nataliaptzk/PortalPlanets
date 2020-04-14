@@ -15,8 +15,11 @@ public class PuzzleManager : MonoBehaviour
         public bool planetSolved;
     }
 
-     public List<PlanetPuzzle> planetsWithPuzzles = new List<PlanetPuzzle>();
+    public List<PlanetPuzzle> planetsWithPuzzles = new List<PlanetPuzzle>();
     [SerializeField] private TextMeshProUGUI _puzzlesCountUI;
+    [SerializeField] private GameObject _tutorialScreen;
+    [SerializeField] private GameObject _winScreen;
+    [SerializeField] private GameObject _gameUI;
     private CameraFollow _camera;
     private ChunksControl _chunksControl;
 
@@ -97,20 +100,28 @@ public class PuzzleManager : MonoBehaviour
             return;
         }
 
-        FinishLevel();
+        StartCoroutine(FinishLevel());
     }
 
-    private void FinishLevel()
+    private IEnumerator FinishLevel()
     {
         _camera.isFollowing = false;
         _camera.lookAt.position = Vector3.zero;
         _chunksControl.PutTogetherChildren();
+        yield return new WaitForSeconds(2);
+        //open win screen
         Debug.Log("Level Finished");
     }
 
-    // send stream from the planet to the core
+    public void TutorialScreenActive(bool value)
+    {
+        _gameUI.SetActive(!value);
+        _tutorialScreen.SetActive(value);
+    }
 
-    // fix the core
-
-    // check if puzzles finished every time the puzzle is solved, so it can see whether someone broke the puzzle or not
+    public void WinScreenActive(bool value)
+    {
+        _gameUI.SetActive(!value);
+        _winScreen.SetActive(value);
+    }
 }

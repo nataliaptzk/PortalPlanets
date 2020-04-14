@@ -59,7 +59,7 @@ public class CameraFollow : MonoBehaviour
             _mouseScrollOffset = new Vector3();
 
 
-            _offset = lookAt.transform.up.normalized * 300f;
+            _offset = lookAt.transform.up.normalized * 500f;
             //Vector3 newPos = (lookAt.position - lookAt.up * -250f) + _offset;
             Vector3 newPos = (lookAt.position + _cameraTargetToFollow.position + _offset);
             Vector3 smoothedPos = Vector3.SmoothDamp(myTransform.position, newPos, ref _velocity, smoothSpeed);
