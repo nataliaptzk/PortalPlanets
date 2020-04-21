@@ -2,6 +2,9 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///  A part of Spherical Gravity tutorial by Sebastian Lague
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
@@ -19,6 +22,4 @@ public class GravityBody : MonoBehaviour
     {
         planet.Attract(_rb);
     }
-
-
 }

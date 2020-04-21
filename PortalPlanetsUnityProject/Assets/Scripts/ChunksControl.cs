@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
+/// <summary>
+///  This class manages the chunks of the core planet. It hold the references too all chunks of the planet and manages the animations of the planet.
+///  - Natalia Pietrzak
+/// </summary>
 public class ChunksControl : MonoBehaviour
 {
     [SerializeField] private List<Transform> _children;
@@ -54,7 +58,7 @@ public class ChunksControl : MonoBehaviour
 
         // move children away from vector 0 normalised
         _audioSource.Play();
-        
+
         var middle = Vector3.zero;
         foreach (var child in _children)
         {

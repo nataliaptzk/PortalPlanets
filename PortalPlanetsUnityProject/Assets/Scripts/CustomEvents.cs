@@ -3,16 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  This class contains declaration of custom events in the game.
+///  - Natalia Pietrzak
+/// </summary>
 public class CustomEvents : MonoBehaviour
 {
     public static CustomEvents current;
+    public event Action<PuzzleTriggerArea, GameObject> OnPuzzleTriggerEnter;
+    public event Action<PuzzleTriggerArea, GameObject> OnPuzzleTriggerExit;
 
     private void Awake()
     {
         current = this;
     }
 
-    public event Action<PuzzleTriggerArea, GameObject> OnPuzzleTriggerEnter;
 
     public void PuzzleTriggerEnter(PuzzleTriggerArea triggerArea, GameObject puzzleItem)
     {
@@ -22,8 +27,6 @@ public class CustomEvents : MonoBehaviour
         }
     }
 
-
-    public event Action<PuzzleTriggerArea, GameObject> OnPuzzleTriggerExit;
 
     public void PuzzleTriggerExit(PuzzleTriggerArea triggerArea, GameObject puzzleItem)
     {

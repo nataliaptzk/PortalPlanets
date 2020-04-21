@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  This class manages all puzzles on a particular planet. It also plays animations when all planet puzzles are solved.
+///  - Natalia Pietrzak
+/// </summary>
 public class PuzzlesOnThePlanet : MonoBehaviour
 {
     public List<PuzzleTriggerArea> _puzzleTriggers = new List<PuzzleTriggerArea>();
@@ -17,6 +21,7 @@ public class PuzzlesOnThePlanet : MonoBehaviour
     [SerializeField] private AudioClip _beamOnAudioClip;
     [SerializeField] private AudioClip _beamOffAudioClip;
     private AudioSource _audioSource;
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -32,10 +37,10 @@ public class PuzzlesOnThePlanet : MonoBehaviour
     public void BeamOn()
     {
         isBeamOn = true;
-        
+
         _audioSource.clip = _beamOnAudioClip;
         _audioSource.Play();
-        
+
         _camera.lookAt.position = (Vector3.zero + gameObject.transform.position) / 2;
         _camera.isFollowing = false;
         LeanTween.value(gameObject, _from, _to, _time).setOnUpdate((Vector3 val) => { _beam.SetPosition(1, val); }).setEase(LeanTweenType.easeInQuart).setOnComplete(OnComplete);

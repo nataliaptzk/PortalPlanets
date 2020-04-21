@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+/// <summary>
+///  This class manages the custom events' behaviour when the puzzle item is brought to the puzzle area.
+///  - Natalia Pietrzak
+/// </summary>
 public class PuzzleItem : MonoBehaviour
 {
     public PuzzleTypes.Puzzles type;

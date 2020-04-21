@@ -2,18 +2,17 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///  A part of Spherical Gravity tutorial by Sebastian Lague
+/// </summary>
 [RequireComponent(typeof(GravityBody))]
 public class ThirdPersonController : MonoBehaviour
 {
     [SerializeField] private float _walkSpeed;
-
     [SerializeField] private float _backWalkSpeed;
-
     [SerializeField] private Transform _pickUpSlot;
-
     public Transform PickUpSlot => _pickUpSlot;
     public bool holdingItem;
-
     private bool _grounded;
     private float _verticalLookRotation;
     private Vector3 _moveAmount;
@@ -43,7 +42,7 @@ public class ThirdPersonController : MonoBehaviour
             targetMoveAmount = moveDir * _walkSpeed;
         }
 
-        _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .15f);
+        _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .1f);
 
         transform.Rotate(0, x * 360f * Time.deltaTime, 0, Space.Self);
     }

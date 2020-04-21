@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  This class updates the position of the camera in the main menu.
+///  - Natalia Pietrzak
+/// </summary>
 public class SpanCamera : MonoBehaviour
 {
     [SerializeField] private float _rotationSpeed;
 
     [SerializeField] private Vector3 _lookAt;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()

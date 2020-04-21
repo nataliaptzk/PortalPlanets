@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  This class contains the functions to animate an object.
+///  - Natalia Pietrzak
+/// </summary>
 public class MessageBoxAnimation : MonoBehaviour
 {
     public void Appear()

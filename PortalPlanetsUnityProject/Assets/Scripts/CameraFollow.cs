@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  This class manages the follow action of the camera. It can follow the player or a given Transform.
+///  - Natalia Pietrzak
+/// </summary>
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform _cameraTargetToFollow;

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///  A part of Spherical Gravity tutorial by Sebastian Lague
+/// </summary>
 public class GravityAttractor : MonoBehaviour
 {
     [SerializeField] private float gravity = -9.8f;

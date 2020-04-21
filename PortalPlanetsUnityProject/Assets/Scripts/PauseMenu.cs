@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  This class manages the pause menu.
+///  - Natalia Pietrzak
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
     private bool isPaused;
@@ -13,7 +17,6 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         _pauseMenu.SetActive(false);
         Time.timeScale = 1;
-
     }
 
     private void Update()

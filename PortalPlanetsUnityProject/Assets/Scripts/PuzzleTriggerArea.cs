@@ -5,6 +5,10 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+///  This class manages the puzzle trigger area. It checks for puzzle item collisions. It also sets up the particles for the puzzle area.
+///  - Natalia Pietrzak
+/// </summary>
 public class PuzzleTriggerArea : MonoBehaviour
 {
     [Serializable]
@@ -87,8 +91,6 @@ public class PuzzleTriggerArea : MonoBehaviour
             {
                 foreach (var module in particleSystems)
                 {
-                    //  var moduleMain = module;
-                    //    moduleMain.startColor = _colors[0];
                     module.trailMaterial = _materials[0];
                     module.material = _materials[5];
                 }

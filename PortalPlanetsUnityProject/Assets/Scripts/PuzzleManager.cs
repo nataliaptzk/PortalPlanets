@@ -6,6 +6,10 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+///  This class manages all puzzles in the game. It hold references to the puzzles and manages the state of the game.
+///  - Natalia Pietrzak
+/// </summary>
 public class PuzzleManager : MonoBehaviour
 {
     [Serializable]
@@ -27,8 +31,8 @@ public class PuzzleManager : MonoBehaviour
     public int puzzleCount;
     public int puzzleSolvedCount;
 
-   // public 
-    
+    // public 
+
     private void Awake()
     {
         _pauseMenu = FindObjectOfType<PauseMenu>();
@@ -76,7 +80,6 @@ public class PuzzleManager : MonoBehaviour
         CheckHowManyAreSolvedOnThePlanet();
 
         DisplayPuzzleAmount();
-        //CheckIfAllPlanetsAreSolved();
     }
 
     private void CheckHowManyAreSolvedOnThePlanet()

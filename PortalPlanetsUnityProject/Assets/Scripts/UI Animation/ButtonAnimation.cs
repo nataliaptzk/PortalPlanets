@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+///  This class contains the OnPointerEnter/Exit button animations.
+///  - Natalia Pietrzak
+/// </summary>
 public class ButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public AudioSource _sound;
-    
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         LeanTween.scale(gameObject, new Vector3(1.2f, 1.2f), 0.2f).setEase(LeanTweenType.easeOutExpo);
@@ -18,4 +22,5 @@ public class ButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         LeanTween.scale(gameObject, new Vector3(1f, 1f), 0.2f).setEase(LeanTweenType.easeOutExpo);
     }
+
 }

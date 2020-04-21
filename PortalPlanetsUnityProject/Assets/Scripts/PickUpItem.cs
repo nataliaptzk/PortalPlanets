@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+///  This class is attached to all objects that can be picked up. It contains functions such as ItemPickUp and ItemDrop.
+///  - Natalia Pietrzak
+/// </summary>
 public class PickUpItem : MonoBehaviour
 {
     private TextMeshProUGUI _messageText;
@@ -15,7 +19,7 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] private AudioClip _pickUp;
     [SerializeField] private AudioClip _drop;
     private AudioSource _audioSource;
-    
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -55,7 +59,6 @@ public class PickUpItem : MonoBehaviour
 
         _player.holdingItem = false;
         _ps.Play();
-
     }
 
     private void OnTriggerEnter(Collider other)
